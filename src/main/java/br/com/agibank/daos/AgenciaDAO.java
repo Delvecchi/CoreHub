@@ -1,7 +1,7 @@
 package br.com.agibank.daos;
 
 import br.com.agibank.beans.Agencia;
-import br.com.agibank.beans.Conexao;
+import br.com.agibank.dao.Conexao;
 import br.com.agibank.beans.Suporte;
 
 import java.sql.Connection;
@@ -17,7 +17,7 @@ public class AgenciaDAO {
 
 
     public AgenciaDAO() throws SQLException {
-        con = Conexao.getConnection();
+        con = Conexao.getConexao();
     }
 
     public void fecharConexao() throws SQLException {

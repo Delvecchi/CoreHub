@@ -1,6 +1,7 @@
 package br.com.agibank.dao.taxa;
 
 import br.com.agibank.beans.conta.taxa.Taxa;
+import br.com.agibank.dao.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

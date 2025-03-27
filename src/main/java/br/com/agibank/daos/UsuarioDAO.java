@@ -1,7 +1,7 @@
 package br.com.agibank.daos;
 
 import br.com.agibank.beans.Usuario;
-import br.com.agibank.beans.Conexao;
+import br.com.agibank.dao.Conexao;
 import br.com.agibank.controller.CifradorSenha;
 
 import java.sql.*;
@@ -13,7 +13,7 @@ public class UsuarioDAO {
     private ResultSet rs;
 
     public UsuarioDAO() throws SQLException {
-        con = Conexao.getConnection();
+        con = Conexao.getConexao();
     }
 
     public void fecharConexao() throws SQLException {
