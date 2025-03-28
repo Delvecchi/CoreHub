@@ -21,7 +21,7 @@ public class DocumentoDAO {
     }
 
     public int criarDocumento(Documento documento) throws SQLException {
-        final String sql = "INSERT INTO Documento (numero, id_usuario, tipo, arquivo ) VALUES ( ?, ?, ?, ?)";
+        final String sql = "INSERT INTO Documento (numero, id_usuario, tipo, arquivo) VALUES ( ?, ?, ?, ?)";
         stmt = con.prepareStatement(sql);
 
         stmt.setString(1, documento.getNumero());

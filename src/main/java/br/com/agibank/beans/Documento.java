@@ -15,7 +15,7 @@ public class Documento {
         this.arquivo = arquivo;
     }
 
-    public Documento(int idUsuario, String tipo, int numero, String arquivo) {
+    public Documento(int idUsuario, String tipo, String numero, String arquivo) {
     }
 
     public int getId_usuario() {

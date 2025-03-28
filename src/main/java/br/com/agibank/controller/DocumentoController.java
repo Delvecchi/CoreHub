@@ -14,10 +14,12 @@ public class DocumentoController {
     public DocumentoController() throws SQLException {
     }
 
-    public void adicionarDocumento(int id_usuario, String tipo, int numero, String arquivo) throws SQLException {
-        Documento documento = new Documento(id_usuario, tipo, numero, arquivo);
+    public void adicionarDocumento(int id_usuario, String tipo, String numero, String arquivo) throws SQLException {
+
         try {
-           DocumentoDAO.criarDocumento(documento);
+            Documento documento = new Documento(1, id_usuario, tipo, numero, arquivo);
+            DocumentoDAO.criarDocumento(documento);
+            inserirTipoDocumento(numero);
         } catch (SQLException e) {
          System.out.println(e.getMessage());
         }
@@ -36,17 +38,16 @@ public class DocumentoController {
         DocumentoDAO.atualizarDocumento(id_usuario, tipo, numero, arquivo);
     }
 
-    public void inserirDocumento(String numero) {
+    public void inserirTipoDocumento(String numero) {
         try {
             if (numero.length() == 11) {
-                DocumentoDAO.determinarTipoDocumento("cpf");
+                DocumentoDAO.determinarTipoDocumento("cpf", 12);
             } else if (numero.length() == 8) {
-                DocumentoDAO.determinarTipoDocumento("rg");
-
+                DocumentoDAO.determinarTipoDocumento("rg", 12);
             } else if (numero.length() == 9) {
-                DocumentoDAO.determinarTipoDocumento("cnh");
+                DocumentoDAO.determinarTipoDocumento("cnh", 12);
             } else if (numero.length() == 14) {
-                DocumentoDAO.determinarTipoDocumento("cnpj");
+                DocumentoDAO.determinarTipoDocumento("cnpj", 12);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

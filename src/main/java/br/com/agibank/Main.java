@@ -22,19 +22,25 @@ public class Main {
 //        Scanner sc = new Scanner(System.in);
 //        MenuInicial.exibirMenuInicial(sc);
         try {
-//            Documento documento = new Documento(1, 1234567890, 12, "r", "r");
+//            Documento documento = new Documento(1, 12, " ", " ", " ");
 //            DocumentoDAO documentoDAO = new DocumentoDAO();
 //            documentoDAO.criarDocumento(documento);
 
+//            DocumentoController documentoController = new DocumentoController();
+//            documentoController.adicionarDocumento(12, " ", "12345678901", "foto");
+
+            DocumentoController documentoController = new DocumentoController();
+            documentoController.adicionarDocumento(12, " ", "12345678901", " ");
+
 //            DocumentoDAO documentoDAO = new DocumentoDAO();
-//            documentoDAO.deletarDocumento(4);
+//            documentoDAO.deletarDocumento(8);
 
 //            DocumentoDAO documentoDAO = new DocumentoDAO();
 //            documentoDAO.determinarTipoDocumento("cpf");
 
 
-            DocumentoController documentoController = new DocumentoController();
-            documentoController.inserirDocumento("12312312");
+//            DocumentoController documentoController = new DocumentoController();
+//            documentoController.inserirTipoDocumento("12312312");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
