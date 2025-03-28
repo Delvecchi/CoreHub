@@ -6,6 +6,8 @@ import br.com.agibank.controller.SuporteController;
 import br.com.agibank.controller.AgenciaController;
 import br.com.agibank.dao.DocumentoDAO;
 import br.com.agibank.daos.UsuarioDAO;
+import br.com.agibank.view.MenuCadastro;
+import br.com.agibank.view.MenuDocumento;
 import br.com.agibank.view.MenuInicial;
 
 import java.sql.SQLException;
@@ -19,32 +21,35 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws SQLException{
-//        Scanner sc = new Scanner(System.in);
-//        MenuInicial.exibirMenuInicial(sc);
-        try {
-//            Documento documento = new Documento(1, 12, " ", " ", " ");
+        Scanner sc = new Scanner(System.in);
+        MenuInicial.exibirMenuInicial(sc);
+//        try {
+////            Documento documento = new Documento(1, 12, " ", " ", " ");
+////            DocumentoDAO documentoDAO = new DocumentoDAO();
+////            documentoDAO.criarDocumento(documento);
+//
+////            DocumentoController documentoController = new DocumentoController();
+////            documentoController.adicionarDocumento(12, " ", "12345678901", "foto");
+//
+////            DocumentoController documentoController = new DocumentoController();
+////            documentoController.adicionarDocumento(12, " ", "12345678901", " ");
+//
 //            DocumentoDAO documentoDAO = new DocumentoDAO();
-//            documentoDAO.criarDocumento(documento);
+//            documentoDAO.deletarDocumento(9);
+//
+////            DocumentoDAO documentoDAO = new DocumentoDAO();
+////            documentoDAO.determinarTipoDocumento("cpf");
+//
+//
+////            DocumentoController documentoController = new DocumentoController();
+////            documentoController.inserirTipoDocumento("12312312");
+//
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
 
-//            DocumentoController documentoController = new DocumentoController();
-//            documentoController.adicionarDocumento(12, " ", "12345678901", "foto");
-
-            DocumentoController documentoController = new DocumentoController();
-            documentoController.adicionarDocumento(12, " ", "12345678901", " ");
-
-//            DocumentoDAO documentoDAO = new DocumentoDAO();
-//            documentoDAO.deletarDocumento(8);
-
-//            DocumentoDAO documentoDAO = new DocumentoDAO();
-//            documentoDAO.determinarTipoDocumento("cpf");
-
-
-//            DocumentoController documentoController = new DocumentoController();
-//            documentoController.inserirTipoDocumento("12312312");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+//        MenuDocumento menuDocumento = new MenuDocumento();
+//        menuDocumento.exibirMenuDocumento(12, 10);
 
 
 

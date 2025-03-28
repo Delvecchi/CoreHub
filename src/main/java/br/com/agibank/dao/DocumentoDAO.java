@@ -59,7 +59,7 @@ public class DocumentoDAO {
         stmt.executeUpdate();
     }
 
-    public void atualizarDocumento(int idUsuario, String tipo, int numero, String arquivo) {
+    public void atualizarDocumento(int idUsuario, String tipo, String numero, String arquivo) {
 
     }
 }
