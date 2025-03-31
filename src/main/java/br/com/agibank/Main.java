@@ -4,7 +4,9 @@ import br.com.agibank.beans.Usuario;
 import br.com.agibank.controller.DocumentoController;
 import br.com.agibank.controller.SuporteController;
 import br.com.agibank.controller.AgenciaController;
+import br.com.agibank.controller.VerificacaoSegurancaTransacao;
 import br.com.agibank.dao.DocumentoDAO;
+import br.com.agibank.dao.transacoes.TransacaoDAO;
 import br.com.agibank.daos.UsuarioDAO;
 import br.com.agibank.view.MenuCadastro;
 import br.com.agibank.view.MenuDocumento;
@@ -21,8 +23,8 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws SQLException{
-        Scanner sc = new Scanner(System.in);
-        MenuInicial.exibirMenuInicial(sc);
+//        Scanner sc = new Scanner(System.in);
+//        MenuInicial.exibirMenuInicial(sc);
 //        try {
 ////            Documento documento = new Documento(1, 12, " ", " ", " ");
 ////            DocumentoDAO documentoDAO = new DocumentoDAO();
@@ -51,7 +53,8 @@ public class Main {
 //        MenuDocumento menuDocumento = new MenuDocumento();
 //        menuDocumento.exibirMenuDocumento(12, 10);
 
-
+        TransacaoDAO transacaoDAO = new TransacaoDAO();
+        transacaoDAO.buscarSomaTransacao(1);
 
     }
 }
