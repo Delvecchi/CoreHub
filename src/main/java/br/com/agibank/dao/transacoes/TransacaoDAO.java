@@ -51,16 +51,6 @@ public class TransacaoDAO {
         return transacao;
     }
 
-    public double buscarSomaTransacao(int id_conta_origem) throws SQLException{
-        final String sql = "SELECT SUM(valor) FROM Transacao WHERE id_conta_origem = ?";
-        stmt = con.prepareStatement(sql);
-        stmt.setInt(1, id_conta_origem);
-        rs = stmt.executeQuery();
-
-        double soma = rs.getDouble(1);
-        return soma;
-    }
-
     public int atualizarTransacao(int id, String descricao) throws SQLException {
         final String sql = "UPDATE Transacao SET descricao = ? WHERE id_transacao = ?";
         stmt = con.prepareStatement(sql);

@@ -7,6 +7,7 @@ import br.com.agibank.controller.AgenciaController;
 import br.com.agibank.controller.VerificacaoSegurancaTransacao;
 import br.com.agibank.dao.DocumentoDAO;
 import br.com.agibank.dao.transacoes.TransacaoDAO;
+import br.com.agibank.dao.transacoes.VerificacaoSegurancaDAO;
 import br.com.agibank.daos.UsuarioDAO;
 import br.com.agibank.view.MenuCadastro;
 import br.com.agibank.view.MenuDocumento;
@@ -25,7 +26,19 @@ public class Main {
     public static void main(String[] args) throws SQLException{
 //        Scanner sc = new Scanner(System.in);
 //        MenuInicial.exibirMenuInicial(sc);
-//        try {
+        try {
+
+//                VerificacaoSegurancaDAO verificacaoSegurancaDAO = new VerificacaoSegurancaDAO();
+//                double resultado = verificacaoSegurancaDAO.mediaValores(1);
+//                System.out.println(resultado);
+
+//                VerificacaoSegurancaDAO verificacaoSegurancaDAO = new VerificacaoSegurancaDAO();
+//                double resultado = verificacaoSegurancaDAO.maiorValor(1);
+//                System.out.println(resultado);
+            VerificacaoSegurancaDAO verificacaoSegurancaDAO = new VerificacaoSegurancaDAO();
+            Date resultado = verificacaoSegurancaDAO.horarioTransacao(3);
+            System.out.println(resultado);
+
 ////            Documento documento = new Documento(1, 12, " ", " ", " ");
 ////            DocumentoDAO documentoDAO = new DocumentoDAO();
 ////            documentoDAO.criarDocumento(documento);
@@ -46,15 +59,14 @@ public class Main {
 ////            DocumentoController documentoController = new DocumentoController();
 ////            documentoController.inserirTipoDocumento("12312312");
 //
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
 
 //        MenuDocumento menuDocumento = new MenuDocumento();
 //        menuDocumento.exibirMenuDocumento(12, 10);
 
-        TransacaoDAO transacaoDAO = new TransacaoDAO();
-        transacaoDAO.buscarSomaTransacao(1);
+
 
     }
 }
