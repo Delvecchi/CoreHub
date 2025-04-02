@@ -1,6 +1,9 @@
 package br.com.agibank;
 import br.com.agibank.controller.VerificacaoSegurancaTransacaoController;
+import br.com.agibank.dao.DocumentoDAO;
 import br.com.agibank.dao.transacoes.VerificacaoSegurancaDAO;
+import br.com.agibank.daos.UsuarioDAO;
+import br.com.agibank.view.MenuDocumento;
 import br.com.agibank.view.MenuInicial;
 
 import java.sql.SQLException;
@@ -10,8 +13,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws SQLException{
-        Scanner sc = new Scanner(System.in);
-        MenuInicial.exibirMenuInicial(sc);
+//        Scanner sc = new Scanner(System.in);
+//        MenuInicial.exibirMenuInicial(sc);
+
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int resultado = usuarioDAO.localizarIdUsuario(123);
+        System.out.println(resultado);
 //        try {
 
 //                VerificacaoSegurancaDAO verificacaoSegurancaDAO = new VerificacaoSegurancaDAO();
@@ -41,7 +48,7 @@ public class Main {
 ////            documentoController.adicionarDocumento(12, " ", "12345678901", " ");
 //
 //            DocumentoDAO documentoDAO = new DocumentoDAO();
-//            documentoDAO.deletarDocumento(9);
+//            documentoDAO.deletarDocumento(22);
 //
 ////            DocumentoDAO documentoDAO = new DocumentoDAO();
 ////            documentoDAO.determinarTipoDocumento("cpf");
@@ -50,12 +57,14 @@ public class Main {
 ////            DocumentoController documentoController = new DocumentoController();
 ////            documentoController.inserirTipoDocumento("12312312");
 //
+//        MenuDocumento menuDocumento = new MenuDocumento();
+//        menuDocumento.exibirMenuDocumento(15);
+
 //        } catch (SQLException e) {
 //            System.out.println(e.getMessage());
 //        }
 
-//        MenuDocumento menuDocumento = new MenuDocumento();
-//        menuDocumento.exibirMenuDocumento(12, 10);
+
 
 
 

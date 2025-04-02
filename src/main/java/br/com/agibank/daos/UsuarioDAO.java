@@ -7,6 +7,8 @@ import br.com.agibank.controller.CifradorSenha;
 import java.sql.*;
 import java.time.LocalDate;
 
+import static javax.swing.UIManager.getInt;
+
 public class UsuarioDAO {
     private Connection con;
     private PreparedStatement stmt;
@@ -36,6 +38,22 @@ public class UsuarioDAO {
         stmt.setInt(8, usuario.getNumero());
         stmt.setString(9, usuario.getComplemento());
         return stmt.executeUpdate();
+    }
+
+    public int localizarIdUsuario(int telefone) throws SQLException {
+        int id = 0;
+        String sql = "SELECT id_usuario FROM Usuario WHERE telefone = ?";
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, telefone);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            id = rs.getInt("id_usuario");
+        }
+
+        return id;
+
     }
 
     public int atualizarCadastroUsuario(String nome, String apelido, String senha, String email, int telefone, LocalDate data_nascimento, String rua, int numero, String complemento, int id_usuario) throws SQLException {

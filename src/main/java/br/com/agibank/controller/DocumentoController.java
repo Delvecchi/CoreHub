@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class DocumentoController {
     private DocumentoDAO DocumentoDAO = new DocumentoDAO();
-
+    int idUsuario = 0;
     public DocumentoController() throws SQLException {
     }
 
@@ -16,12 +16,13 @@ public class DocumentoController {
         try {
             Documento documento = new Documento(1, id_usuario, tipo, numero, arquivo);
             DocumentoDAO.criarDocumento(documento);
+            idUsuario = id_usuario;
             inserirTipoDocumento(numero);
         } catch (SQLException e) {
          System.out.println(e.getMessage());
         }
 
-        return id_usuario;
+        return 0;
     }
 
     public void deletarDocumento(int id_documento){
@@ -41,13 +42,13 @@ public class DocumentoController {
     public void inserirTipoDocumento(String numero) {
         try {
             if (numero.length() == 11) {
-                DocumentoDAO.determinarTipoDocumento("cpf", 12);
+                DocumentoDAO.determinarTipoDocumento("cpf", idUsuario);
             } else if (numero.length() == 8) {
-                DocumentoDAO.determinarTipoDocumento("rg", 12);
+                DocumentoDAO.determinarTipoDocumento("rg", idUsuario);
             } else if (numero.length() == 9) {
-                DocumentoDAO.determinarTipoDocumento("cnh", 12);
+                DocumentoDAO.determinarTipoDocumento("cnh", idUsuario);
             } else if (numero.length() == 14) {
-                DocumentoDAO.determinarTipoDocumento("cnpj", 12);
+                DocumentoDAO.determinarTipoDocumento("cnpj", idUsuario);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

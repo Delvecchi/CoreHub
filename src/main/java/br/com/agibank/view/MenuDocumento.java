@@ -18,7 +18,7 @@ public class MenuDocumento {
         }
     }
 
-    public void exibirMenuDocumento(int id_usuario, int id_documento) {
+    public void exibirMenuDocumento(int id_usuario) {
         Scanner sc = new Scanner(System.in);
         int interacao;
 
@@ -41,9 +41,7 @@ public class MenuDocumento {
                         System.out.println("Arquivo do Documento: ");
                         String arquivo = sc.nextLine();
 
-                        documentoController.inserirTipoDocumento(numero);
-
-                        int resultado = documentoController.adicionarDocumento(id_usuario, " ", numero, arquivo);
+                        documentoController.adicionarDocumento(id_usuario, " ", numero, arquivo);
 
                         break;
                     case 2: //ATUALIZAR DOCUMENTO
