@@ -17,7 +17,7 @@ public class MenuTransacao {
             interacao  = sc.nextInt();
             switch (interacao){
                 case 1:
-                System.out.println("PIX");
+                    System.out.println("PIX");
                     break;
                 case 2:
                     System.out.println("TED");
