@@ -27,7 +27,7 @@ public class UsuarioDAO {
         stmt = con.prepareStatement(sql);
 
         CifradorSenha cifradorSenha = new CifradorSenha();
-
+        try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
         stmt.setString(1, usuario.getNome());
         stmt.setString(2, usuario.getApelido());
         stmt.setString(3, cifradorSenha.cifrarSenha(usuario.getSenha()));
@@ -37,7 +37,24 @@ public class UsuarioDAO {
         stmt.setString(7, usuario.getRua());
         stmt.setInt(8, usuario.getNumero());
         stmt.setString(9, usuario.getComplemento());
-        return stmt.executeUpdate();
+        // Executar o INSERT
+        int rowsAffected = stmt.executeUpdate();
+
+        // Se a inserção for bem-sucedida, pegar o id gerado
+        if (rowsAffected > 0) {
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    return rs.getInt(1);  // Retorna o id do usuário gerado
+                }
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        throw new SQLException("Erro ao criar usuário", e);
+    }
+
+    return 0;  // Caso algo dê errado, retorna 0
+
     }
 
     public int localizarIdUsuario(int telefone) throws SQLException {

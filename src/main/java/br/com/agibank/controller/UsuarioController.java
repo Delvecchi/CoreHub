@@ -32,7 +32,9 @@ public class UsuarioController {
         try{
             if(verificarSenha(senha,confirmacaoSenha)){
                 Usuario usuario = new Usuario(1, nome, apelido, senha, email,telefone,  LocalDate.of(2020, 1, 8), rua, numero,complemento);
-                return usuarioDAO.criarUsuario(usuario);
+                // Chama o DAO para salvar o usuário e obter o id_usuario gerado
+                int idUsuario = usuarioDAO.criarUsuario(usuario);
+                return idUsuario;  // Retorna o id do usuário cadastrado
             }
 
             System.out.println(CoresTerminal.getRED() + "Senhas nao compativeis" + CoresTerminal.getRESET());

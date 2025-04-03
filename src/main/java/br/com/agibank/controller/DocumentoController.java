@@ -1,29 +1,41 @@
 package br.com.agibank.controller;
 
 import br.com.agibank.beans.Documento;
+import br.com.agibank.beans.Usuario;
 import br.com.agibank.dao.DocumentoDAO;
 
 import java.sql.SQLException;
 
 public class DocumentoController {
     private DocumentoDAO DocumentoDAO = new DocumentoDAO();
-    int idUsuario = 0;
+
     public DocumentoController() throws SQLException {
     }
 
-    public int adicionarDocumento(int id_usuario, String tipo, String numero, String arquivo) throws SQLException {
-
+    public int adicionarDocumento(int idUsuario, String tipo, String numero, String arquivo) throws SQLException {
         try {
-            Documento documento = new Documento(1, id_usuario, tipo, numero, arquivo);
+            Documento documento = new Documento(1, idUsuario, tipo, numero, arquivo);
             DocumentoDAO.criarDocumento(documento);
-            idUsuario = id_usuario;
-            inserirTipoDocumento(numero);
+            inserirTipoDocumento(numero, idUsuario);
         } catch (SQLException e) {
          System.out.println(e.getMessage());
         }
 
         return 0;
     }
+
+//    public void cadastroEAdicaoDeDocumento() throws SQLException {
+//        // Primeiro, cadastra o usuário e obtém o id_usuario
+//        int idUsuario = cadastrarUsuario("João", "senha123", "senha123", 123456789, "Joãozinho", "joao@email.com", "Rua A", 123, "Apt 101");
+//
+//        if (idUsuario != 0) { // Se o cadastro for bem-sucedido
+//            // Agora, adiciona o documento associando ao id_usuario
+//            adicionarDocumento(idUsuario, "RG", "123456789", "caminho/do/arquivo.pdf");
+//        } else {
+//            System.out.println("Cadastro do usuário falhou.");
+//        }
+//    }
+
 
     public void deletarDocumento(int id_documento){
         try{
@@ -33,13 +45,13 @@ public class DocumentoController {
         }
     }
 
-    public int alterarDocumento(int id_usuario, String tipo, String numero, String arquivo) throws SQLException {
-        DocumentoDAO.atualizarDocumento(id_usuario, tipo, numero, arquivo);
-        inserirTipoDocumento(numero);
-        return id_usuario;
-    }
+//    public int alterarDocumento(int id_usuario, String tipo, String numero, String arquivo) throws SQLException {
+//        DocumentoDAO.atualizarDocumento(id_usuario, tipo, numero, arquivo);
+//        inserirTipoDocumento(numero);
+//        return id_usuario;
+//    }
 
-    public void inserirTipoDocumento(String numero) {
+    public void inserirTipoDocumento(String numero, int idUsuario) {
         try {
             if (numero.length() == 11) {
                 DocumentoDAO.determinarTipoDocumento("cpf", idUsuario);

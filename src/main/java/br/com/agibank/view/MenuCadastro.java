@@ -46,25 +46,37 @@ public class MenuCadastro {
         complemento = sc.nextLine();
 
 
-
-
         UsuarioController usuarioController = new UsuarioController();
+        DocumentoController documentoController = new DocumentoController();
         Usuario usuario = new Usuario();
 
-        if(usuarioController.cadastrarUsuario(nome,senha,senhaConfirmada, Integer.parseInt(telefone),apelido,email,rua, Integer.parseInt(numero),complemento) == 1) {
+//        if(usuarioController.cadastrarUsuario(nome,senha,senhaConfirmada, Integer.parseInt(telefone),apelido,email,rua, Integer.parseInt(numero),complemento) == 1) {
+//            int id = usuario.getId_Usuario();
+//            System.out.println(id);
+//            System.out.println(CoresTerminal.getBLUE() + "Indique algumas informacoes sobre o documento escolhido para cadastro" + CoresTerminal.getRESET());
+//            System.out.print(CoresTerminal.getBLUE() + "Numero do Documento: " + CoresTerminal.getRESET());
+//            String numeroDoc = sc.nextLine();
+//            System.out.print(CoresTerminal.getBLUE() + "Arquivo do Documento: " + CoresTerminal.getRESET());
+//            String arquivo = sc.nextLine();
+//
+//            int id_usuario = usuario.getId_Usuario();
+//
+//            DocumentoController documentoController = new DocumentoController();
+//            documentoController.adicionarDocumento(" ", numero, arquivo);
+        int idUsuario = usuarioController.cadastrarUsuario(nome,senha,senhaConfirmada, Integer.parseInt(telefone),apelido,email,rua, Integer.parseInt(numero),complemento);
 
+        if (idUsuario != 0) { // Se o cadastro for bem-sucedido
+            // Agora, adiciona o documento associando ao id_usuario
             System.out.println(CoresTerminal.getBLUE() + "Indique algumas informacoes sobre o documento escolhido para cadastro" + CoresTerminal.getRESET());
             System.out.print(CoresTerminal.getBLUE() + "Numero do Documento: " + CoresTerminal.getRESET());
             String numeroDoc = sc.nextLine();
             System.out.print(CoresTerminal.getBLUE() + "Arquivo do Documento: " + CoresTerminal.getRESET());
             String arquivo = sc.nextLine();
-
-            int id_usuario = usuario.getId_Usuario();
-
-            DocumentoController documentoController = new DocumentoController();
-            documentoController.adicionarDocumento(id_usuario, " ", numero, arquivo);
+            documentoController.adicionarDocumento(idUsuario, "", numeroDoc, arquivo);
+            documentoController.inserirTipoDocumento(numeroDoc, idUsuario);
 
             System.out.println(CoresTerminal.getGREEN() + "Cadastro realizado com sucesso!" + CoresTerminal.getRESET());
+
         }else{
             System.out.println(CoresTerminal.getRED() + "Erro ao realizar cadastro!" + CoresTerminal.getRESET());
             cadastro();
